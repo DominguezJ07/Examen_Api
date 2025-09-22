@@ -13,10 +13,13 @@ class RoleController extends Controller
 
 {
      public function index()
-{
-    $Role = Role::all();
-    return response()->json($Role);
-}
+    {
+        $Role= Role::included()
+        ->filter()
+        ->sort()
+        ->getOrPaginate();
+        return response()->json($Role);
+    }
 
     public function store(Request $request)
     {

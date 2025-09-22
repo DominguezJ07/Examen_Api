@@ -14,9 +14,13 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $Category = Category::with('publication')->get();
+        $Category = Category::included()
+        ->filter()
+        ->sort()
+        ->getOrPaginate();
         return response()->json($Category);
     }
+
 
     public function store(Request $request)
     {

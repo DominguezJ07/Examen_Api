@@ -15,10 +15,12 @@ class PublicationController extends Controller
 {
     public function index()
     {
-        $Publication = Publication::with('seller', 'category')->get();
+        $Publication = Publication::included()
+        ->filter()
+        ->sort()
+        ->getOrPaginate();
         return response()->json($Publication);
     }
-
     public function store(Request $request)
     {
         $request->validate([

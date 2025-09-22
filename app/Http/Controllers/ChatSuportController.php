@@ -12,9 +12,12 @@ use Illuminate\Http\Request;
 class ChatSuportController extends Controller
 
 {
-    public function index()
+     public function index()
     {
-        $ChatSuport = ChatSuport::with('User')->get();
+        $ChatSuport = ChatSuport::included()
+        ->filter()
+        ->sort()
+        ->getOrPaginate();
         return response()->json($ChatSuport);
     }
 

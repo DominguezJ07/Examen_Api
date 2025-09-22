@@ -21,7 +21,10 @@ class UserController extends Controller
 {
     public function index()
     {
-        $User = User::with('Seller', 'Comment', 'ChatSuport', 'Role', 'Complaint', 'Image', 'Publication')->get();
+        $User = User::included()
+        ->filter()
+        ->sort()
+        ->getOrPaginate();
         return response()->json($User);
     }
 

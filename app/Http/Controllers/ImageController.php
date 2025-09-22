@@ -16,10 +16,12 @@ class imageController extends Controller
 {
     public function index()
     {
-        $image = image::with('User', 'Publication', 'Seller')->get();
+        $image = image::included()
+        ->filter()
+        ->sort()
+        ->getOrPaginate();
         return response()->json($image);
     }
-
     public function store(Request $request)
     {
         $request->validate([

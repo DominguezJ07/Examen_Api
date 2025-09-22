@@ -13,11 +13,7 @@ use Illuminate\Http\Request;
 class ComplaintController extends Controller
 
 {
-    public function index()
-    {
-        $Complaint = Complaint::with('User', 'publication')->get();
-        return response()->json($Complaint);
-    }
+    
 
     public function store(Request $request)
     {

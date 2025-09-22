@@ -14,7 +14,10 @@ class SellerController extends Controller
 {
     public function index()
     {
-        $Seller = Seller::with('User')->get();
+        $Seller= Seller::included()
+        ->filter()
+        ->sort()
+        ->getOrPaginate();
         return response()->json($Seller);
     }
 

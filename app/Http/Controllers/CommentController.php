@@ -14,7 +14,10 @@ class CommentController extends Controller
 {
     public function index()
     {
-        $Comment = Comment::with('User', 'publication')->get();
+        $Comment = Comment::included()
+        ->filter()
+        ->sort()
+        ->getOrPaginate();
         return response()->json($Comment);
     }
 
