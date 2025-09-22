@@ -42,7 +42,7 @@ class UserController extends Controller
         $User = User::create($request->all());
         
         // Cargar las relaciones después de crear
-        $User->load('Seller', 'Comment', 'ChatSuport', 'Role', 'Complaint', 'Image', 'Publication');
+        $User->load('seller', 'comment', 'ChatSuport', 'role', 'complaint', 'image', 'publication');
         
         return response()->json($User, 201);
     }

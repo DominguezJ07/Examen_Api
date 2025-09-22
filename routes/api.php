@@ -31,7 +31,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('roles',RoleController::class);
 Route::apiResource('categories',CategoryController::class);
 Route::apiResource('ChatSuport',ChatSuportController::class);
-Route::apiResource('user',UserController::class);
+Route::apiResource('users',UserController::class);
 Route::apiResource('comment',commentController::class);
 Route::apiResource('sellers',SellerController::class);
 Route::apiResource('complaint',ComplaintController::class);

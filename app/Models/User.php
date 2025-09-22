@@ -41,7 +41,7 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
      // LISTAS BLANCAS PARA API
-    protected $allowIncluded = ['Seller', 'Comment', 'Chatsuport', 'Role', 'Complain', 'Image', 'Publication'];
+    protected $allowIncluded = ['Seller', 'Comment', 'Chatsuport', 'role', 'Complain', 'Image', 'Publication'];
     protected $allowFilter = ['id', 'primer_nombre', 'segundo_nombre', 'primer_apellido', 'segundo_apellido', 'activo', 'role_id'];
     protected $allowSort = ['id', 'primer_nombre', 'segundo_nombre', 'primer_apellido', 'segundo_apellido', 'activo', 'created_at', 'updated_at'];
 
@@ -61,7 +61,7 @@ class User extends Authenticatable
         return $this->hasMany(Complaint::class);
     }
      public function image () {
-        return $this->morphMany(Image::class, 'imageable');
+        return $this->morphOne(Image::class, 'imageable');
     }
     public function publication () {
         return $this->belongsToMany(Publication::class);

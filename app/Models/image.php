@@ -22,11 +22,11 @@ class image extends Model
     ];
 
     // LISTAS BLANCAS PARA API
-    protected $allowIncluded = ['users', 'publication', 'seller'];
+    protected $allowIncluded = ['imageable'];
     protected $allowFilter = ['id',  'imageable_id', 'imageable_type', 'descripcion'];
     protected $allowSort = ['id', 'imageable_id', 'imageable_type', 'descripcion', 'created_at', 'updated_at'];
 
-    public function image (){
+    public function imageable (){
     return $this->morphTo();
     }
 
